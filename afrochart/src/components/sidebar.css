@@ -1,0 +1,113 @@
+.sidebar {
+  width: 250px;
+  background-color: #050505;
+  border-right: 1px solid #141414;
+  display: flex;
+  flex-direction: column;
+  padding: 35px 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.sidebar-section {
+  margin-bottom: 30px;
+}
+
+.sidebar-category-title {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: #555;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Style des liens avec transitions fluides */
+.sidebar-link {
+  display: block;
+  color: #888;
+  text-decoration: none;
+  font-size: 13px;
+  padding: 8px 12px;
+  margin: 4px 0;
+  letter-spacing: 0.5px;
+  border-radius: 6px;
+  position: relative;
+  transition: all 0.25s ease-in-out;
+}
+
+/* Effet interactif au survol : décale légèrement et change de couleur */
+.sidebar-link:hover {
+  color: #fff;
+  background-color: #12121a;
+  transform: translateX(6px);
+}
+
+/* Élément actif (sans fond blanc, juste bien visible) */
+.sidebar-link.active {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #161622;
+  border-left: 3px solid #fff;
+  padding-left: 15px;
+}
+
+/* Encadré promotionnel interactif en bas */
+.sidebar-promo-box {
+  margin-top: auto;
+  background-color: #0d0d12;
+  border: 1px solid #1a1a22;
+  padding: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sidebar-promo-box:hover {
+  border-color: #333;
+  background-color: #14141c;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar-promo-box h3 {
+  font-size: 13px;
+  letter-spacing: 1px;
+  margin: 0 0 5px 0;
+  color: #fff;
+}
+
+.sidebar-promo-box p {
+  font-size: 11px;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.sidebar-promo-box:hover p {
+  color: #999;
+}
+
+/* Style pour les titres de catégories (DÉCOUVRIR, COLLECTION) */
+.sidebar-category-title {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: #555; /* Couleur par défaut grise */
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Si vous voulez que "DÉCOUVRIR" soit spécifiquement blanc et actif, 
+   vous pouvez lui ajouter une classe .active dans le JSX, ou utiliser ce style : */
+.sidebar-category-title.active {
+  color: #ffffff; /* Devient blanc pur */
+}
+
+.page-title-section h1 {
+  font-size: 1.8rem; /* Réduit la taille pour que ça rentre mieux */
+  max-width: 900px;  /* Empêche le texte de s'étaler sur toute la largeur de l'écran */
+  margin: 0 auto 10px auto; /* Centre le tout joliment */
+  line-height: 1.2;  /* Espace correctement les lignes quand il y a un retour à la ligne */
+  word-break: break-word; /* Évite que les longs mots ne dépassent */
+}

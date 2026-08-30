@@ -1,0 +1,453 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(11, 15, 25, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modal-container {
+  background: #ffffff;
+  color: #1a1a24;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 30px;
+  position: relative;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+
+.modal-close-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #f0f2f5;
+  border: none;
+  font-size: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  transition: background 0.2s;
+}
+
+.modal-close-icon:hover {
+  background: #e4e6eb;
+}
+
+.sub-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #edf0f5;
+  padding-bottom: 15px;
+}
+
+.sub-icon-badge {
+  background: #e6f4ea;
+  font-size: 24px;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.sub-modal-header h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 2px 0;
+  color: #1a1a24;
+}
+
+.sub-modal-header p {
+  color: #667085;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* Grille 2 colonnes bien séparées */
+.sub-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+@media (max-width: 768px) {
+  .sub-grid-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sub-left-column, .sub-right-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.section-header-row h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  color: #1a1a24;
+}
+
+/* Toggle mensuel / annuel */
+.billing-toggle {
+  background: #f0f2f5;
+  padding: 3px;
+  border-radius: 8px;
+  display: flex;
+  gap: 2px;
+}
+
+.billing-toggle button {
+  background: transparent;
+  border: none;
+  padding: 5px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #667085;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.billing-toggle button.active {
+  background: #ffffff;
+  color: #1a1a24;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+}
+
+/* Onglets de paiement */
+.payment-method-tabs {
+  display: flex;
+  background: #f0f2f5;
+  padding: 3px;
+  border-radius: 8px;
+  gap: 2px;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 5px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #667085;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.tab-btn.active {
+  background: #ffffff;
+  color: #1a1a24;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+}
+
+/* Cartes de plans */
+.plan-option-card {
+  border: 1px solid #e4e7ec;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #ffffff;
+}
+
+.plan-option-card.selected {
+  border-color: #f77f00;
+  background: #fffdfa;
+  box-shadow: 0 0 0 1px #f77f00;
+}
+
+.plan-option-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plan-radio-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.plan-radio-title input[type="radio"] {
+  accent-color: #f77f00;
+  width: 16px;
+  height: 16px;
+}
+
+.plan-radio-title h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a24;
+}
+
+.plan-subtext {
+  font-size: 0.78rem;
+  color: #667085;
+}
+
+.plan-price-tag {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #1a1a24;
+  text-align: right;
+}
+
+.tiny-period {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #667085;
+}
+
+.plan-expanded-features {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed #e4e7ec;
+}
+
+.plan-expanded-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.plan-expanded-features li {
+  font-size: 0.8rem;
+  color: #027a48;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Formulaire de carte bancaire - FOND BLANC PROPRE */
+.card-input-container {
+  background: #f8f9fa;
+  border: 1px solid #e4e7ec;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #344054;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  background: #ffffff !important;
+  color: #1a1a24 !important;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.88rem;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #f77f00;
+  box-shadow: 0 0 0 3px rgba(247, 127, 0, 0.12);
+}
+
+.card-number-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.card-number-wrapper input {
+  padding-right: 40px;
+}
+
+.card-brand-icon {
+  position: absolute;
+  right: 12px;
+  font-size: 1.1rem;
+}
+
+.form-row-dual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.free-plan-notice {
+  font-size: 0.85rem;
+  color: #667085;
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Code promo */
+.discount-section {
+  margin-bottom: 15px;
+}
+
+.discount-section label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #344054;
+  margin-bottom: 5px;
+}
+
+.discount-input-row {
+  display: flex;
+  gap: 8px;
+}
+
+.discount-input-row input {
+  flex: 1;
+  background: #ffffff !important;
+  color: #1a1a24 !important;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.88rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.discount-input-row button {
+  background: #f0f2f5;
+  color: #344054;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  padding: 0 16px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.discount-input-row button:hover {
+  background: #e4e6eb;
+}
+
+.discount-success {
+  color: #027a48;
+  font-size: 0.78rem;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+/* Récapitulatif et Totaux */
+.checkout-summary-lines {
+  border-top: 1px solid #edf0f5;
+  padding-top: 12px;
+  margin-bottom: 12px;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  color: #475467;
+  margin-bottom: 6px;
+}
+
+.summary-line.discount-line {
+  color: #027a48;
+  font-weight: 600;
+}
+
+.checkout-total-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #edf0f5;
+  padding-top: 12px;
+  margin-bottom: 20px;
+}
+
+.total-label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #1a1a24;
+}
+
+.due-date {
+  font-size: 0.72rem;
+  color: #667085;
+}
+
+.total-amount-block {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #1a1a24;
+}
+
+.currency-sign {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #667085;
+}
+
+.checkout-confirm-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #f77f00 0%, #d90429 100%);
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(217, 4, 4, 0.25);
+  transition: opacity 0.2s;
+  box-sizing: border-box;
+}
+
+.checkout-confirm-btn:hover {
+  opacity: 0.92;
+}
