@@ -1,84 +1,94 @@
-import React from 'react';
-import './sidebar.css';
+import React from "react";
+import "./sidebar.css";
 
-function Sidebar({ activeTab, setActiveTab, setSelectedArtist, setSelectedAlbum }) {
+function Sidebar({
+  activeTab,
+  setActiveTab,
+  setSelectedArtist,
+  setSelectedAlbum,
+}) {
   const handleNav = (tab) => {
     setActiveTab(tab);
-    if (setSelectedArtist) setSelectedArtist(null);
-    if (setSelectedAlbum) setSelectedAlbum(null); // Réinitialise l'album sélectionné
+
+    if (setSelectedArtist) {
+      setSelectedArtist(null);
+    }
+
+    if (setSelectedAlbum) {
+      setSelectedAlbum(null);
+    }
   };
+
+  const discoverLinks = [
+    ["accueil", "Accueil"],
+    ["charts", "Classements"],
+    ["artists", "Artistes"],
+    ["chansons", "Chansons"],
+    ["tendances", "Tendances"],
+  ];
+
+  const collectionLinks = [
+    ["albums", "Albums"],
+    ["nouveautes", "Nouveautés"],
+  ];
 
   return (
     <aside className="sidebar">
-      <div className="sidebar-section">
-        <div className="header-brand">AFROCHART</div>
-        <br />
-        <p className="sidebar-category-title active">DÉCOUVRIR</p>
-        
-        <a
-          href="#"
-          className={`sidebar-link ${activeTab === "accueil" ? "active" : ""}`}
-          onClick={(e) => { e.preventDefault(); handleNav("accueil"); }}
-        >
-          Accueil
-        </a>
-        
-        <a
-          href="#"
-          className={`sidebar-link ${activeTab === "charts" ? "active" : ""}`}
-          onClick={(e) => { e.preventDefault(); handleNav("charts"); }}
-        >
-          Classements
-        </a>
-        
-        <a
-          href="#"
-          className={`sidebar-link ${activeTab === "artists" ? "active" : ""}`}
-          onClick={(e) => { e.preventDefault(); handleNav("artists"); }}
-        >
-          Artistes
-        </a>
-
-        <a
-          href="#"
-          className={`sidebar-link ${activeTab === "chansons" ? "active" : ""}`}
-          onClick={(e) => { e.preventDefault(); handleNav("chansons"); }}
-        >
-          Chansons
-        </a>
-
-        <a
-          href="#"
-          className={`sidebar-link ${activeTab === "tendances" ? "active" : ""}`}
-          onClick={(e) => { e.preventDefault(); handleNav("tendances"); }}
-        >
-          Tendances
-        </a>
+      <div className="sidebar-logo">
+        AFROCHART
       </div>
 
-      <div className="sidebar-section">
-        <p className="sidebar-category-title active">COLLECTION</p>
-        
-        <a
-          href="#"
-          className={`sidebar-link ${activeTab === "albums" ? "active" : ""}`}
-          onClick={(e) => { e.preventDefault(); handleNav("albums"); }}
-        >
-          Albums
-        </a>
+      <nav className="sidebar-nav">
+        <div className="sidebar-section">
+          <p className="sidebar-category-title">DÉCOUVRIR</p>
 
-        <a
-          href="#"
-          className={`sidebar-link ${activeTab === "nouveautes" ? "active" : ""}`}
-          onClick={(e) => { e.preventDefault(); handleNav("nouveautes"); }}
-        >
-          Nouveautés
-        </a>
-      </div>
+          {discoverLinks.map(([tab, label]) => (
+            <a
+              key={tab}
+              href="#"
+              className={`sidebar-link ${
+                activeTab === tab ? "active" : ""
+              }`}
+              onClick={(e) => {
+                e.preventDefault();
+                handleNav(tab);
+              }}
+            >
+              <span>{label}</span>
+            </a>
+          ))}
+        </div>
+
+        <div className="sidebar-section">
+          <p className="sidebar-category-title">COLLECTION</p>
+
+          {collectionLinks.map(([tab, label]) => (
+            <a
+              key={tab}
+              href="#"
+              className={`sidebar-link ${
+                activeTab === tab ? "active" : ""
+              }`}
+              onClick={(e) => {
+                e.preventDefault();
+                handleNav(tab);
+              }}
+            >
+              <span>{label}</span>
+            </a>
+          ))}
+        </div>
+      </nav>
 
       <div className="sidebar-promo-box">
-        <h3>AFROCHART</h3>
-        <p>Découvrez le son de l'Afrique.</p>
+        <span className="promo-label">AFROCHART</span>
+
+        <h3>Le son de l'Afrique.</h3>
+
+        <p>
+          Découvrez les artistes, les titres et les tendances
+          musicales africaines.
+        </p>
       </div>
     </aside>
   );

@@ -1,113 +1,341 @@
+/* =========================================
+   AFROCHART — SIDEBAR
+   Desktop / Tablet / Mobile
+   ========================================= */
+
 .sidebar {
+  position: sticky;
+  top: 0;
+  left: 0;
+
   width: 250px;
-  background-color: #050505;
-  border-right: 1px solid #141414;
+  min-width: 250px;
+  height: 100vh;
+
   display: flex;
   flex-direction: column;
-  padding: 35px 20px;
-  min-height: 100vh;
+
+  padding: 30px 18px;
+
+  background: #050505;
+  border-right: 1px solid #18181f;
+
   box-sizing: border-box;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
   flex-shrink: 0;
 }
 
-.sidebar-section {
-  margin-bottom: 30px;
+/* =========================================
+   LOGO
+   ========================================= */
+
+.sidebar-logo {
+  padding: 5px 12px 35px;
+
+  color: #ffffff;
+
+  font-size: 22px;
+  font-weight: 900;
+
+  letter-spacing: 3px;
+
+  white-space: nowrap;
 }
+
+/* =========================================
+   NAVIGATION
+   ========================================= */
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.sidebar-section {
+  margin-bottom: 28px;
+}
+
+/* =========================================
+   TITRES
+   ========================================= */
 
 .sidebar-category-title {
-  font-size: 10px;
-  letter-spacing: 1.5px;
+  margin: 0 0 12px;
+  padding: 0 12px;
+
   color: #555;
-  margin-bottom: 15px;
-  font-weight: bold;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 1.8px;
 }
 
-/* Style des liens avec transitions fluides */
+/* =========================================
+   LIENS
+   ========================================= */
+
 .sidebar-link {
-  display: block;
-  color: #888;
-  text-decoration: none;
-  font-size: 13px;
-  padding: 8px 12px;
-  margin: 4px 0;
-  letter-spacing: 0.5px;
-  border-radius: 6px;
   position: relative;
-  transition: all 0.25s ease-in-out;
+
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  min-height: 42px;
+
+  padding: 0 14px;
+
+  margin-bottom: 4px;
+
+  box-sizing: border-box;
+
+  border-radius: 7px;
+
+  color: #777;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  letter-spacing: 0.3px;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
-/* Effet interactif au survol : décale légèrement et change de couleur */
 .sidebar-link:hover {
-  color: #fff;
-  background-color: #12121a;
-  transform: translateX(6px);
+  color: #ffffff;
+  background: #111116;
+  transform: translateX(3px);
 }
 
-/* Élément actif (sans fond blanc, juste bien visible) */
 .sidebar-link.active {
   color: #ffffff;
-  font-weight: bold;
-  background-color: #161622;
-  border-left: 3px solid #fff;
-  padding-left: 15px;
+  background: #17171e;
+  font-weight: 700;
 }
 
-/* Encadré promotionnel interactif en bas */
+.sidebar-link.active::before {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  top: 9px;
+  bottom: 9px;
+
+  width: 3px;
+
+  border-radius: 0 3px 3px 0;
+
+  background: #ffffff;
+}
+
+/* =========================================
+   PROMO
+   ========================================= */
+
 .sidebar-promo-box {
   margin-top: auto;
-  background-color: #0d0d12;
-  border: 1px solid #1a1a22;
-  padding: 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+
+  padding: 18px;
+
+  border: 1px solid #1b1b22;
+  border-radius: 10px;
+
+  background: #0d0d12;
+
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
 }
 
 .sidebar-promo-box:hover {
-  border-color: #333;
-  background-color: #14141c;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  background: #111117;
+  border-color: #303038;
+
+  transform: translateY(-2px);
+}
+
+.promo-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #ffffff;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
 }
 
 .sidebar-promo-box h3 {
+  margin: 0 0 7px;
+
+  color: #ffffff;
+
   font-size: 13px;
-  letter-spacing: 1px;
-  margin: 0 0 5px 0;
-  color: #fff;
+  font-weight: 700;
 }
 
 .sidebar-promo-box p {
-  font-size: 11px;
-  color: #666;
   margin: 0;
-  line-height: 1.4;
-  transition: color 0.2s ease;
-}
 
-.sidebar-promo-box:hover p {
-  color: #999;
-}
+  color: #666;
 
-/* Style pour les titres de catégories (DÉCOUVRIR, COLLECTION) */
-.sidebar-category-title {
   font-size: 10px;
-  letter-spacing: 1.5px;
-  color: #555; /* Couleur par défaut grise */
-  margin-bottom: 15px;
-  font-weight: bold;
+  line-height: 1.6;
 }
 
-/* Si vous voulez que "DÉCOUVRIR" soit spécifiquement blanc et actif, 
-   vous pouvez lui ajouter une classe .active dans le JSX, ou utiliser ce style : */
-.sidebar-category-title.active {
-  color: #ffffff; /* Devient blanc pur */
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 900px) {
+  .sidebar {
+    width: 210px;
+    min-width: 210px;
+
+    padding: 25px 14px;
+  }
+
+  .sidebar-logo {
+    padding-left: 10px;
+
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
+  .sidebar-link {
+    font-size: 12px;
+  }
 }
 
-.page-title-section h1 {
-  font-size: 1.8rem; /* Réduit la taille pour que ça rentre mieux */
-  max-width: 900px;  /* Empêche le texte de s'étaler sur toute la largeur de l'écran */
-  margin: 0 auto 10px auto; /* Centre le tout joliment */
-  line-height: 1.2;  /* Espace correctement les lignes quand il y a un retour à la ligne */
-  word-break: break-word; /* Évite que les longs mots ne dépassent */
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: auto;
+
+    padding: 15px 12px 12px;
+
+    border-right: none;
+    border-bottom: 1px solid #18181f;
+
+    overflow: visible;
+  }
+
+  .sidebar-logo {
+    padding: 5px 5px 15px;
+
+    text-align: center;
+
+    font-size: 20px;
+    letter-spacing: 3px;
+  }
+
+  .sidebar-nav {
+    width: 100%;
+  }
+
+  .sidebar-section {
+    margin-bottom: 12px;
+  }
+
+  .sidebar-category-title {
+    margin-bottom: 7px;
+    padding: 0 4px;
+
+    font-size: 8px;
+  }
+
+  .sidebar-section {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .sidebar-category-title {
+    width: 100%;
+  }
+
+  .sidebar-link {
+    width: auto;
+    min-height: 34px;
+
+    margin: 0;
+
+    padding: 0 11px;
+
+    border: 1px solid #1a1a21;
+    border-radius: 6px;
+
+    background: #0d0d12;
+
+    font-size: 10px;
+  }
+
+  .sidebar-link:hover {
+    transform: none;
+  }
+
+  .sidebar-link.active {
+    background: #ffffff;
+    color: #050505;
+    border-color: #ffffff;
+  }
+
+  .sidebar-link.active::before {
+    display: none;
+  }
+
+  .sidebar-promo-box {
+    display: none;
+  }
+}
+
+/* =========================================
+   PETITS TÉLÉPHONES
+   ========================================= */
+
+@media (max-width: 480px) {
+  .sidebar {
+    padding: 12px 10px;
+  }
+
+  .sidebar-logo {
+    padding-bottom: 12px;
+
+    font-size: 18px;
+  }
+
+  .sidebar-link {
+    min-height: 32px;
+
+    padding: 0 9px;
+
+    font-size: 9px;
+  }
+
+  .sidebar-category-title {
+    font-size: 7px;
+    letter-spacing: 1.3px;
+  }
 }
